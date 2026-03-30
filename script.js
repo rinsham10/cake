@@ -297,7 +297,19 @@
   clearActiveLayer();
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => { resizeCanvas(); snapTo(snapIdx); });
+  // Never call snapTo() on resize: mobile Safari fires resize when the URL bar
+  // shows/hides; snapTo(0) near the top forces crust snapFrame and desyncs the canvas
+  // from actual scroll progress (intro says "blank plate" but image shows crust).
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    onScroll();
+  });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      resizeCanvas();
+      onScroll();
+    });
+  }
   onScroll();
 
 })();
