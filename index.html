@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/images/logos/logo.svg" />
+  <title>Sweet Crumbs — Artisan Cake Studio</title>
+  <meta name="description" content="Sweet Crumbs is a luxury artisan cake studio crafting bespoke celebration cakes, pastries, and desserts with the finest ingredients. Order yours today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4C16 4 10 8 10 14H22C22 8 16 4 16 4Z" fill="currentColor" opacity="0.8"/>
+          <rect x="7" y="14" width="18" height="3" rx="1.5" fill="currentColor"/>
+          <rect x="5" y="17" width="22" height="11" rx="2" fill="currentColor" opacity="0.9"/>
+          <rect x="9" y="20" width="14" height="2" rx="1" fill="white" opacity="0.3"/>
+        </svg>
+      </span>
+      <span class="logo-text">Sweet Crumbs</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-close-wrap">
+        <button type="button" class="nav-close" id="navClose" aria-label="Close menu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </li>
+      <li><a href="#hero" id="nav-home">Home</a></li>
+      <li><a href="#specialties" id="nav-specialties">Specialties</a></li>
+      <li><a href="#gallery" id="nav-gallery">Gallery</a></li>
+      <li><a href="#process" id="nav-process">Our Process</a></li>
+      <li><a href="#testimonials" id="nav-testimonials">Reviews</a></li>
+    </ul>
+    <a href="#order" class="nav-cta" id="nav-order">Order Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO SECTION (Scroll Snap Animation) ========== -->
+  <section id="hero" class="hero-sticky-wrapper">
+    <div class="hero-canvas-container">
+      <canvas id="heroCanvas"></canvas>
+
+      <!-- Colour-mood overlay (shifts per layer) -->
+      <div class="hero-overlay" id="heroOverlay"></div>
+
+      <!-- ── Layer panels (left editorial column) ── -->
+      <div class="layer-panels-wrap" id="layerPanelsWrap">
+
+        <!-- PANEL 0: Biscuit Crust -->
+        <div class="layer-panel" id="lp-0" data-layer="0">
+          <div class="lp-inner">
+            <span class="lp-eyebrow">Layer <em>01</em></span>
+            <h2 class="lp-title">The<br><em>Crust</em></h2>
+            <p class="lp-body">A golden, buttery Graham cracker base — hand-pressed and perfectly crisped. The quiet foundation that holds everything together.</p>
+            <div class="lp-rule"></div>
+            <a href="#specialties" class="lp-cta">Explore More <span>↓</span></a>
+          </div>
+        </div>
+
+        <!-- PANEL 1: Cheesecake layer -->
+        <div class="layer-panel" id="lp-1" data-layer="1">
+          <div class="lp-inner">
+            <span class="lp-eyebrow">Layer <em>02</em></span>
+            <h2 class="lp-title">The<br><em>Cheesecake</em></h2>
+            <p class="lp-body">Silken cream cheese folded with a whisper of vanilla and lemon zest — poured slowly, set to cloud-like perfection.</p>
+            <div class="lp-rule"></div>
+            <a href="#specialties" class="lp-cta">Explore More <span>↓</span></a>
+          </div>
+        </div>
+
+        <!-- PANEL 2: Blueberry Glaze -->
+        <div class="layer-panel" id="lp-2" data-layer="2">
+          <div class="lp-inner">
+            <span class="lp-eyebrow">Layer <em>03</em></span>
+            <h2 class="lp-title">The<br><em>Glaze</em></h2>
+            <p class="lp-body">Fresh blueberry compote — jewel-bright, fragrant and cascading. The crowning glory that makes every slice extraordinary.</p>
+            <div class="lp-rule"></div>
+          
+          </div>
+        </div>
+
+      </div><!-- /layer-panels-wrap -->
+
+      <!-- ── Snap progress dots (right rail) ── -->
+      <nav class="snap-rail" id="snapRail" aria-label="Layer navigation">
+        <div class="snap-rail-line" id="snapRailLine"></div>
+        <button class="snap-dot active" id="sdot-0" data-snap="0" aria-label="Layer 1: The Crust">
+          <span class="sdot-label">Crust</span>
+        </button>
+        <button class="snap-dot" id="sdot-1" data-snap="1" aria-label="Layer 2: The Cheesecake">
+          <span class="sdot-label">Cheesecake</span>
+        </button>
+        <button class="snap-dot" id="sdot-2" data-snap="2" aria-label="Layer 3: The Glaze">
+          <span class="sdot-label">Glaze</span>
+        </button>
+      </nav>
+
+      <!-- ── Bottom brand headline (always visible) ── -->
+      <!--<div class="hero-brand-stamp" id="heroBrandStamp">
+        <p class="hbs-eyebrow">Sweet Crumbs · Artisan Cake Studio</p>
+        <h1 class="hbs-title">Built in <em>Layers</em></h1>
+      </div>-->
+
+      <!-- ── Intro copy (visible before first scroll) ── -->
+      <div class="hero-intro" id="heroIntro">
+        <p class="hero-intro-kicker">Sweet Crumbs</p>
+        <h1 class="hero-intro-title">A blank plate, soon a masterpiece.</h1>
+      </div>
+
+      <!-- ── Scroll hint (fades on first scroll) ── -->
+      <div class="scroll-indicator" id="scrollIndicator">
+        <span class="scroll-label">Scroll to begin</span>
+        <div class="scroll-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE STRIP ========== -->
+  <div class="marquee-strip">
+    <div class="marquee-track" role="presentation">
+      <!-- Two identical groups: animation is -50% so loop is seamless; each group is long enough to cover wide viewports -->
+      <div class="marquee-group">
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+        <span>Artisan Baking</span><span class="dot">✦</span>
+        <span>Custom Cakes</span><span class="dot">✦</span>
+        <span>Wedding Cakes</span><span class="dot">✦</span>
+        <span>Birthday Cakes</span><span class="dot">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SPECIALTIES ========== -->
+  <section id="specialties" class="section specialties-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">What We Create</p>
+        <h2 class="section-title">Our <em>Specialties</em></h2>
+        <p class="section-desc">Every piece is baked fresh daily, using local ingredients and time-honoured techniques.</p>
+      </div>
+      <div class="specialties-grid">
+        <div class="specialty-card" id="specialty-wedding">
+          <div class="specialty-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8C24 8 14 15 14 25H34C34 15 24 8 24 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="25" width="28" height="4" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="29" width="32" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M18 35h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Wedding Cakes</h3>
+          <p>Multi-tiered masterpieces designed to complement your perfect day, from classic white to avant-garde edible art.</p>
+          <a href="#order" class="card-link">Enquire <span>→</span></a>
+        </div>
+        <div class="specialty-card featured" id="specialty-custom">
+          <div class="specialty-badge">Most Popular</div>
+          <div class="specialty-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="30" width="20" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M20 20h8M24 16v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Custom Creations</h3>
+          <p>Bespoke cakes designed around your vision — from hand-painted florals to sculpted fondant designs.</p>
+          <a href="#order" class="card-link">Order Custom <span>→</span></a>
+        </div>
+        <div class="specialty-card" id="specialty-pastry">
+          <div class="specialty-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 32C8 32 16 20 24 20C32 20 40 32 40 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 32h24v4a2 2 0 01-2 2H14a2 2 0 01-2-2v-4z" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Artisan Pastries</h3>
+          <p>Buttery croissants, delicate macarons, eclairs, and petit fours crafted fresh every morning.</p>
+          <a href="#gallery" class="card-link">View Menu <span>→</span></a>
+        </div>
+        <div class="specialty-card" id="specialty-birthday">
+          <div class="specialty-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="22" width="28" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 22v-2a10 10 0 0120 0v2" stroke="currentColor" stroke-width="1.5"/><path d="M20 12V8M28 12V8M24 12V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Birthday Cakes</h3>
+          <p>Joyful, colourful, and utterly delicious — personalised for every age, taste, and theme imaginable.</p>
+          <a href="#order" class="card-link">Customise <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">A Taste of <em>Excellence</em></h2>
+      </div>
+    </div>
+    <div class="gallery-mosaic">
+      <div class="gallery-item tall" id="gallery-1">
+        <img src="images/gallery/wedding.png" alt="Elegant tiered wedding cake" loading="lazy" />
+        <div class="gallery-overlay"><span>Wedding Elegance</span></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" id="gallery-2">
+          <img src="images/gallery/birthday.png" alt="Custom birthday cake" loading="lazy" />
+          <div class="gallery-overlay"><span>Birthday Dreams</span></div>
+        </div>
+        <div class="gallery-item" id="gallery-3">
+          <img src="images/gallery/chocolate.png" alt="Chocolate layer cake" loading="lazy" />
+          <div class="gallery-overlay"><span>Chocolate Indulgence</span></div>
+        </div>
+        <div class="gallery-item" id="gallery-4">
+          <img src="images/gallery/celebration.png" alt="Luxury celebration cake" loading="lazy" />
+          <div class="gallery-overlay"><span>Celebration Cakes</span></div>
+        </div>
+        <div class="gallery-item" id="gallery-5">
+          <img src="images/gallery/lotus.png" alt="Lotus-themed artisan cake" loading="lazy" />
+          <div class="gallery-overlay"><span>Lotus Collection</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section id="process" class="section process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">How It Works</p>
+        <h2 class="section-title">The <em>Sweet Process</em></h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step" id="step-1">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Consultation</h3>
+            <p>Share your vision, occasion, and flavour preferences with our cake artisans.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step" id="step-2">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Design</h3>
+            <p>We sketch a bespoke design concept tailored specifically for your celebration.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step" id="step-3">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Tasting</h3>
+            <p>Sample our flavour combinations and select the perfect pairing for your cake.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step" id="step-4">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3>Creation</h3>
+            <p>Your masterpiece is handcrafted and delivered to you in perfect condition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <div class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-target="2400">0</span><span class="stat-suffix">+</span>
+        <p class="stat-label">Cakes Delivered</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+        <p class="stat-label">Happy Clients</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="8">0</span><span class="stat-suffix"></span>
+        <p class="stat-label">Years of Artistry</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="14">0</span><span class="stat-suffix"></span>
+        <p class="stat-label">Signature Flavours</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section id="testimonials" class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Kind Words</p>
+        <h2 class="section-title">Loved by <em>Many</em></h2>
+      </div>
+      <div class="testimonials-track-wrapper">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonial-card" id="review-1">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"The wedding cake was absolutely breathtaking. Every guest was in awe and it tasted even better than it looked. Sweet Crumbs exceeded every expectation."</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">S</div>
+              <div><strong>Sarah &amp; James</strong><span>Wedding Couple</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card" id="review-2">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Ordered a custom birthday cake for my daughter — she was over the moon! The attention to detail was incredible. We'll be returning clients forever."</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">M</div>
+              <div><strong>Mia Thompson</strong><span>Loyal Customer</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card" id="review-3">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Best croissants in the city, hands down. Light, flaky and buttery. The team is warm and professional. Sweet Crumbs is our go-to for every occasion."</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">R</div>
+              <div><strong>Rohan Kapoor</strong><span>Regular Patron</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card" id="review-4">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Incredible craftsmanship! The sculpted fondant topper looked exactly like our family pet. It was the highlight of the whole party. Truly gifted artists."</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">L</div>
+              <div><strong>Lily Chen</strong><span>Birthday Celebration</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-nav">
+          <button id="prevReview" class="tnav-btn" aria-label="Previous review">←</button>
+          <button id="nextReview" class="tnav-btn" aria-label="Next review">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ORDER CTA ========== -->
+  <section id="order" class="section order-section">
+    <div class="order-bg"></div>
+    <div class="container order-inner">
+      <p class="section-eyebrow light">Ready to Indulge?</p>
+      <h2 class="order-title">Let's Create Something<br><em>Extraordinary</em></h2>
+      <p class="order-desc">Fill in a few details and our team will reach out to begin crafting your dream cake.</p>
+      <form class="order-form" id="orderForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion">
+              <option value="">Select occasion…</option>
+              <option>Wedding</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" name="eventDate" />
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="message">Tell Us Your Vision</label>
+          <textarea id="message" name="message" rows="4" placeholder="Describe your dream cake — flavours, colours, size, any special requests…"></textarea>
+        </div>
+        <button type="submit" class="btn-primary submit-btn" id="submitOrder">Send My Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">Sweet Crumbs</span>
+        <p>Artisan cakes crafted with love<br>and the finest ingredients.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#specialties">Specialties</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#order">Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>hello@sweetcrumbs.co</p>
+        <p>+1 (555) 234-5678</p>
+        <p>12 Baker Street, New York</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram" id="social-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" id="social-facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Sweet Crumbs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
